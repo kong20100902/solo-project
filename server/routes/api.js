@@ -1,12 +1,12 @@
 const express = require('express');
+const path = require('path');
 
 const starWarsController = require('../controllers/starWarsController');
 
 const router = express.Router();
 
 router.get('/',
-  starWarsController.getCharacters,
-  (req, res) => res.status(200).json(res.locals.people)
+  (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../../index.html'))
 );
 
 router.get('/species',

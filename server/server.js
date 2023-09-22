@@ -22,15 +22,11 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
-app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
-/**
- * express error handler
- * @see https://expressjs.com/en/guide/error-handling.html#writing-error-handlers
- */
 
 app.use((err, req, res, next) => {
   const defaultErr = {
