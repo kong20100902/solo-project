@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,11 +7,10 @@ module.exports = {
     './client/index.js',
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
-  mode: 'development',
+  mode: 'production',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
