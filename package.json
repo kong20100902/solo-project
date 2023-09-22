@@ -1,5 +1,5 @@
 {
-  "name": "unit-project-starwars",
+  "name": "solo-project",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -9,8 +9,7 @@
     "dev": "webpack-dev-server --open --hot --progress --color",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "samanthasalley",
-  "license": "ISC",
+  "author": "wenzhen gong",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-regular-svg-icons": "^5.7.2",
@@ -22,26 +21,23 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.16.0",
-    "react-router-dom": "^6.16.0",
-    "sass-loader": "^12.3.0"
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.2.3",
-    "concurrently": "^5.0.0",
-    "cross-env": "^6.0.3",
-    "css-loader": "^6.5.1",
-    "eslint": "^7.17.0",
-    "eslint-plugin-react": "^7.21.5",
+    "@babel/core": "^7.22.20",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.49.0",
+    "eslint-plugin-react": "^7.33.2",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
-    "nodemon": "^1.18.9",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.64.1",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0",
+    "html-webpack-plugin": "^5.5.3",
+    "nodemon": "^3.0.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
     "webpack-hot-middleware": "^2.24.3"
   },
   "nodemonConfig": {
