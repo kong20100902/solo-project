@@ -15,7 +15,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 // app.use('/', apiRouter);
 app.get('/', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/index.html')));
-app.get('/signin', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html')));
+app.get('/signin', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../signin.html')));
 
 // redirect test
 // app.get('/signon', (req, res) => res.redirect('/signin'));
