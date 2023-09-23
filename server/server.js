@@ -14,9 +14,12 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 
 // app.use('/', apiRouter);
-app.get('/',
-  (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../../index.html'))
-);
+app.get('/', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/index.html')));
+app.get('/signin', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/signin.html')));
+
+// redirect test
+// app.get('/signon', (req, res) => res.redirect('/signin'));
+
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
 

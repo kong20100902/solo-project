@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState } from 'react';
 import BusinessIntro from './BusinessIntro';
 
 import { FontAwesomeIcon as FAIcon } from '@fortawesome/react-fontawesome';
