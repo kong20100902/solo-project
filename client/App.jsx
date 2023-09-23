@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
-// import { Switch, Route } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BusinessIntro from './components/BusinessIntro';
 import BusinessIntroBanners from './components/BusinessIntroBanners';
 import './stylesheets/styles.css';
 
+
 const App = props => {
+  const navigate = useNavigate();
+
+  const handleSignin = () => {
+    console.log('hi')
+    navigate('/signin');
+
+
+  };
+
+
   return (
+
     <section>
       <div>
         <BusinessIntroBanners />
       </div>
-      <button>Sign In</button>
-      <button>Register</button>
+      <Link to="/signin">Sign In</Link>
+      <button onClick={()=>window.open('/signin', 'rel=noopener noreferrer')}>Register</button>
+
     </section>
   );
 };
