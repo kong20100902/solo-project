@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -10,21 +9,16 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
+      directory: path.resolve(__dirname, 'build'),
+      publicPath: '/dummy',
     },
     proxy: {
-      '/api/**': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
-      '/assets/**': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
+      '/signin': 'http://localhost:3000/',
+      // '/signon': 'http://localhost:3000/'
+
     },
   },
   module: {
