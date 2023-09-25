@@ -2,12 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [
-    './client/index.js',
-  ],
+  entry: {
+    bundle: path.resolve(__dirname, 'client/index.js'),
+  },
+  
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    publicPath: '/',
+    filename: '[name].js',
   },
   mode: process.env.NODE_ENV,
   devtool: 'source-map',
@@ -16,10 +18,10 @@ module.exports = {
       directory: path.resolve(__dirname, 'build'),
       publicPath: '/dummy',
     },
-    historyApiFallback: true,
-    proxy: {
-      // '/signin': 'http://localhost:3000/',
-    },
+    historyApiFallback: true,    
+    /* proxy: {
+      '/signin': 'http://localhost:3000/',
+    }, */
   },
   module: {
     rules: [

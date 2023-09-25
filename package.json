@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "build": "export NODE_ENV=production; webpack",
+    "build": "export NODE_ENV=development; webpack",
     "dev": "export NODE_ENV=development; webpack-dev-server --open --hot --progress --color & nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
