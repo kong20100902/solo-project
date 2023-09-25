@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const Home = props => {
+const About = () => {
 
 
   return (
     
-    <div>HOMEPAGE</div>
+    <div>homepage</div>
       
   );
 };
 
-export default Home;
+export default About;

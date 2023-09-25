@@ -10,15 +10,15 @@ module.exports = {
     filename: 'bundle.js',
   },
   mode: process.env.NODE_ENV,
+  devtool: 'source-map',
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'build'),
       publicPath: '/dummy',
     },
+    historyApiFallback: true,
     proxy: {
-      '/signin': 'http://localhost:3000/',
-      // '/signon': 'http://localhost:3000/'
-
+      // '/signin': 'http://localhost:3000/',
     },
   },
   module: {
