@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -17,6 +18,12 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, 'build'),
       publicPath: '/dummy',
+    },
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    hot: true,
+    open: true,
+    client: {
+      progress: true
     },
     historyApiFallback: true,    
     /* proxy: {
@@ -49,5 +56,18 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
+    // fallback: {
+    //   'fs': false,
+    //   'assert': false,
+    //   'dns': false,
+    //   'net': false,
+    //   'crypto': false,
+    //   'util': false,
+    //   'tls': false,
+    //   'stream': false,
+    //   'path': false,
+    //   'buffer': false,
+    // },
+    // alias: {'pg-native': path.resolve(__dirname, 'dummy.js')}
   },
 };

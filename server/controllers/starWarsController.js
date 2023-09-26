@@ -1,4 +1,4 @@
-const models = require('../models/starWarsModels');
+/* const models = require('../models/starWarsModels');
 const starWarsController = {};
 
 starWarsController.getCharacters = (req, res, next) => {
@@ -41,3 +41,4 @@ starWarsController.addCharacter = (req, res, next) => {
 };
 
 module.exports = starWarsController;
+ */

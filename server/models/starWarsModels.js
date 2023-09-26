@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 
 // const MONGO_URI = 'mongodb+srv://kong20100902:0706aceACE@wenzhen-cluster.5q7vmo7.mongodb.net/?retryWrites=true&w=majority';
 
@@ -100,3 +100,4 @@ module.exports = {
   Film,
   Person
 };
+ */

@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 const Dashboard = ({user}) => {
+  if(!user){
+    return (
+      <>
+        <h1>Sign in first!</h1>
+        <Link to = 'signin'>Log In</Link>
+      </>
+    );
+  }
   return (
     <>
-      <h4>LOG IN REQUIRED!</h4>
-      <Link to='/login'>Login</Link>
+      <h4>Hello, {user.name}</h4>
+      <Outlet />
     </>
   );
 };

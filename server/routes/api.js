@@ -5,10 +5,6 @@ const starWarsController = require('../controllers/starWarsController');
 
 const router = express.Router();
 
-router.get('/',
-  (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../../index.html'))
-);
-
 // router.get('/species',
 //   starWarsController.getSpecies,
 //   (req, res) => res.status(200).json(res.locals.species)

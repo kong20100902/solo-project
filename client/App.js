@@ -15,7 +15,8 @@ import UserInfo from './components/UserInfo';
 
 
 const App = () => {
-  const [user, setUser] = useState({id:'0', name:'testuser'});
+  // const [user, setUser] = useState({id:'0', name:'testuser'});
+  const [user, setUser] = useState(null);
   return (
     
     <BrowserRouter>
@@ -25,11 +26,16 @@ const App = () => {
           <Route path = 'about'  element = {<About />}></Route>
           <Route path = 'contact' element = {<Contact />}></Route>
           <Route path = 'signin' element = {<Signin />}></Route>
-          <Route path = 'register' element = {<Register />}></Route>
+          <Route path = 'register' element = {<Register setUser = {setUser}/>}></Route>
           <Route path = '*' element = {<Error />} />
 
-          <Route path = 'dashboard' element= {<Dashboard />}></Route>
-          <Route path = 'dashboard/test' element= {<Dashboard />}></Route>
+          <Route path = 'dashboard' element= {<Dashboard user = {user}/>}>
+
+            {/* <Route index  element= {<Dashboard />}></Route> */}
+
+            <Route path = ':userid' element= {<UserInfo user = {user}/>}></Route>
+          </Route>
+
         </Route>
 
       </Routes>

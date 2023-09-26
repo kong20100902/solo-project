@@ -5,10 +5,10 @@ const UserInfo = ({user}) => {
   const {userid} = useParams();
 
   return (
-    <section className='section product'>
-      <h5>{user.name}</h5>
+    <section>
+      <h5>{user.id}</h5>
 
-      <Link to='/products'>back to products</Link>
+      <Link to='/about'>About</Link>
     </section>
   );
 };
