@@ -14,4 +14,20 @@ soloProjectController.createUser = (req, res, next) => {
   
 };
 
+soloProjectController.getUser = (req, res, next) => {
+  const findUser = `SELECT * FROM users WHERE email = '${req.query.email}'`;
+  db.query(findUser)
+    .then(data => {
+      if(!data.rows[0]){
+        res.locals.user = 'no user';
+      }
+      else{
+        res.locals.user = data.rows[0];
+      }
+      return next();
+    })
+    .catch((e) => {
+      return next({log: 'getUser failed', message: e.detail});});
+};
+
 module.exports = soloProjectController;

@@ -5,7 +5,7 @@ const Dashboard = ({user}) => {
     return (
       <>
         <h1>Sign in first!</h1>
-        <Link to = 'signin'>Log In</Link>
+        <Link to = '/signin'>Log In</Link>
       </>
     );
   }

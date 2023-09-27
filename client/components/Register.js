@@ -21,20 +21,20 @@ const Register = ({setUser}) => {
     )
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         if(res.includes('already exists')){
-          alert(email + ' exits');
+          setLoggedEmail(email);
         }
         else if(res.includes('done')){
-          setUser({fn, ln, email});
-          navigate('/dashboard/');
+          alert('User created, please sign in.');
+          navigate('/signin');
         }
       })
       .catch(err => console.log('POST to /api/creatuser FAILED ', err));
     
-    
 
   };
-
+  const [loggedEmail, setLoggedEmail] = useState('');
   const navigate = useNavigate();
   const [fn, setFn] = useState('');
   const [ln, setLn] = useState('');
@@ -42,8 +42,12 @@ const Register = ({setUser}) => {
   const [pw, setPw] = useState('');
   const [spw, setSpw] = useState('');
   const [msg, setMsg]  = useState('');
-  
-  useEffect(() => {pw === spw ? setMsg('') : setMsg('Your password does not match');});
+  const [msg2, setMsg2]  = useState('');
+
+  useEffect(() => {pw === spw ? setMsg('') : setMsg('Your passwords do not match');});
+
+  useEffect(() => {loggedEmail === email ? setMsg2(loggedEmail + ' exits') : setMsg2('');});
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -69,6 +73,7 @@ const Register = ({setUser}) => {
         <input type='text' value={spw} onChange={(e) => setSpw(e.target.value)} />
       </div>
       <div>{msg}</div>
+      <div>{msg2}</div>
       <button>Register</button>
     </form> 
   );

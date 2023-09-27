@@ -25,13 +25,13 @@ const App = () => {
           <Route index element = {<Home />}></Route>
           <Route path = 'about'  element = {<About />} />
           <Route path = 'contact' element = {<Contact />} />
-          <Route path = 'signin' element = {<Signin />} />
+          <Route path = 'signin' element = {<Signin setUser = {setUser}/>} />
           <Route path = 'register' element = {<Register setUser = {setUser}/>} />
           <Route path = '*' element = {<Error />} />
 
           <Route path = 'dashboard' element= {<Dashboard user = {user}/>}>
             <Route path = ':userid' element= {<UserInfo user = {user}/>} />
-            
+
           </Route>
 
         </Route>
