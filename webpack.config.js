@@ -26,9 +26,9 @@ module.exports = {
       progress: true
     },
     historyApiFallback: true,    
-    /* proxy: {
-      '/signin': 'http://localhost:3000/',
-    }, */
+    proxy: {
+      '/api/**': 'http://localhost:3000/',
+    },
   },
   module: {
     rules: [
@@ -50,24 +50,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './client/index.html',
-    }),
+    new HtmlWebpackPlugin({template: './client/index.html',}),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
-    // fallback: {
-    //   'fs': false,
-    //   'assert': false,
-    //   'dns': false,
-    //   'net': false,
-    //   'crypto': false,
-    //   'util': false,
-    //   'tls': false,
-    //   'stream': false,
-    //   'path': false,
-    //   'buffer': false,
-    // },
-    // alias: {'pg-native': path.resolve(__dirname, 'dummy.js')}
   },
 };

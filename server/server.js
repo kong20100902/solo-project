@@ -10,15 +10,11 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client')));
-app.use('/build', express.static(path.join(__dirname, '../build')));
+// app.use('/build', express.static(path.join(__dirname, '../build')));
 
 
-// app.use('/', apiRouter);
+app.use('/api', apiRouter);
 app.get('/', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/index.html')));
-app.get('/signin', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../signin.html')));
-
-// redirect test
-// app.get('/signon', (req, res) => res.redirect('/signin'));
 
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 

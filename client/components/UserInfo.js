@@ -6,7 +6,7 @@ const UserInfo = ({user}) => {
 
   return (
     <section>
-      <h5>{user.id}</h5>
+      <h5>{user.email}</h5>
 
       <Link to='/about'>About</Link>
     </section>

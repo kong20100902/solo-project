@@ -1,20 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router';
-const { Pool } = require('pg');
-
-
-const pool = new Pool({
-  user: 'kong20100902',
-  host: '127.0.0.1',
-  database: 'solo_project',
-  password: '0706aceACE',
-  port: 5432,
-});
 
 const Register = ({setUser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(pool.query('SELECE NOW()'));
+    if(!fn || !ln || !email || !pw || pw !== spw){
+      alert('All info required in order to create account');
+    }
+    
+    const body = { fn, ln, email, pw };
+    
+    fetch('/api/createuser', 
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/JSON'
+        },
+        body: JSON.stringify(body)
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        if(res.includes('already exists')){
+          alert(email + ' exits');
+        }
+        else if(res.includes('done')){
+          setUser({fn, ln, email});
+          navigate('/dashboard/');
+        }
+      })
+      .catch(err => console.log('POST to /api/creatuser FAILED ', err));
+    
+    
 
   };
 

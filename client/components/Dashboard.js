@@ -11,7 +11,7 @@ const Dashboard = ({user}) => {
   }
   return (
     <>
-      <h4>Hello, {user.name}</h4>
+      <h4>Hello, {user.fn + ' ' + user.ln}</h4>
       <Outlet />
     </>
   );

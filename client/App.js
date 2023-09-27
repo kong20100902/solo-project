@@ -23,17 +23,15 @@ const App = () => {
       <Routes>
         <Route path = '/' element= {<SharedLayout />}>
           <Route index element = {<Home />}></Route>
-          <Route path = 'about'  element = {<About />}></Route>
-          <Route path = 'contact' element = {<Contact />}></Route>
-          <Route path = 'signin' element = {<Signin />}></Route>
-          <Route path = 'register' element = {<Register setUser = {setUser}/>}></Route>
+          <Route path = 'about'  element = {<About />} />
+          <Route path = 'contact' element = {<Contact />} />
+          <Route path = 'signin' element = {<Signin />} />
+          <Route path = 'register' element = {<Register setUser = {setUser}/>} />
           <Route path = '*' element = {<Error />} />
 
           <Route path = 'dashboard' element= {<Dashboard user = {user}/>}>
-
-            {/* <Route index  element= {<Dashboard />}></Route> */}
-
-            <Route path = ':userid' element= {<UserInfo user = {user}/>}></Route>
+            <Route path = ':userid' element= {<UserInfo user = {user}/>} />
+            
           </Route>
 
         </Route>
