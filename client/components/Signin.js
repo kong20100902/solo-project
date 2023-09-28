@@ -17,8 +17,8 @@ const Signin = ({setUser}) => {
           setMsg('Wrong password');
         }
         else{
-          setUser(res);
-          navigate('/dashboard/' + res.userid);
+          // setUser(res);
+          navigate('/dashboard');
         }
       })
       .catch(err => console.log('GET to /api/getuser FAILED ', err));

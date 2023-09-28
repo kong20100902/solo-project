@@ -1,4 +1,6 @@
 const db = require('../models/soloProjectModels');
+const Session = require('../models/sessionModels');
+
 const soloProjectController = {};
 
 soloProjectController.createUser = (req, res, next) => {
@@ -28,6 +30,37 @@ soloProjectController.getUser = (req, res, next) => {
     })
     .catch((e) => {
       return next({log: 'getUser failed', message: e.detail});});
+};
+
+soloProjectController.startSession = (req, res, next) => {
+  Session.create({cookieId: res.locals.user.userid})
+    .then(data => {return next();})
+    .catch((e) => {return next();});
+};
+
+soloProjectController.hasSession = (req, res, next) => {
+
+  Session.findOne({cookieId: req.cookies.userid}).then(document => {
+    if(!document){
+      res.locals.user = null;
+      return next();
+    }
+    const findUser = `SELECT * FROM users WHERE userid = '${document.cookieId}'`;
+
+    db.query(findUser)
+      .then(data => {
+        res.locals.user = data.rows[0];
+        return next();
+      });
+  });
+};
+
+soloProjectController.setUseridCookie = (req, res, next) => {
+  if(res.locals.user.userid){
+    res.cookie('userid', res.locals.user.userid);
+  }
+    
+  return next();
 };
 
 module.exports = soloProjectController;

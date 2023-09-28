@@ -1,15 +1,21 @@
 const path = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1/solo_project_mongo');
 
 const app = express();
 
 const apiRouter = require('./routes/api');
+
 
 const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(cookieParser());
+
 // app.use('/build', express.static(path.join(__dirname, '../build')));
 
 

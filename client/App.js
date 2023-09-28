@@ -17,6 +17,8 @@ import UserInfo from './components/UserInfo';
 const App = () => {
   // const [user, setUser] = useState({id:'0', name:'testuser'});
   const [user, setUser] = useState(null);
+  const [user2, setUser2] = useState('this is user2string');
+
   return (
     
     <BrowserRouter>
@@ -29,10 +31,7 @@ const App = () => {
           <Route path = 'register' element = {<Register setUser = {setUser}/>} />
           <Route path = '*' element = {<Error />} />
 
-          <Route path = 'dashboard' element= {<Dashboard user = {user}/>}>
-            <Route path = ':userid' element= {<UserInfo user = {user}/>} />
-
-          </Route>
+          <Route path = 'dashboard' element= {<Dashboard user = {user} setUser = {setUser} />}></Route>
 
         </Route>
 
