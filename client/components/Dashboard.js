@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserInfo from './UserInfo';
 const Dashboard = ({user, setUser}) => {
-  console.log('hi');
-  fetch('/api/getSession')
-    .then(res => res.json())
-    .then(res => {setUser(res);})
-    .catch(err => console.log('GET to /api/getSession FAILED ', err));
-  
+
+  useEffect(() => {
+    
+    fetch('/api/getSession')
+      .then(res => res.json())
+      .then(res => {
+        setUser(res);
+        console.log(user);
+      })
+      .then(res => {})
+      .catch(err => console.log('GET to /api/getSession FAILED ', err));
+
+  }, []);
+    
   if(!user){
     return (
       <>
@@ -22,5 +30,6 @@ const Dashboard = ({user, setUser}) => {
       <UserInfo user = {user} />
     </>
   );
+  
 };
 export default Dashboard;
