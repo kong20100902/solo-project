@@ -11,4 +11,5 @@ router.get('/getsession', soloProjectController.hasSession, (req, res) => res.st
 
 router.post('/createorder', soloProjectController.createOrder, (req, res) => res.status(200).json('create order done'));
 
+router.get('/getorder', soloProjectController.getOrder, (req, res) => res.status(200).json(res.locals.order));
 module.exports = router;

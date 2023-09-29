@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import OrderList from './OrderList';
 
 const CreateOrder = ({user}) => {
   const [link, setLink] = useState('');
@@ -23,21 +24,25 @@ const CreateOrder = ({user}) => {
         },
         body: JSON.stringify(body)
       }
-    );
+    )
+      .catch(err => console.log('POST to /api/createorder FAILED ', err));
+
   };
   return (
-    <form onSubmit={handleOrder}>
-      <div>
-        <label>Link</label>
-        <input type='text' value={link} onChange={(e) => setLink(e.target.value)} />
-      </div>
-      <div>
-        <label>Notes</label>
-        <input type='text' value={note} onChange={(e) => setNote(e.target.value)} />
-      </div>
-      <button>Submit Order</button>
-      <div>{msg}</div>
-    </form> 
+    <>
+      <form onSubmit={handleOrder}>
+        <div>
+          <label>Link</label>
+          <input type='text' value={link} onChange={(e) => setLink(e.target.value)} />
+        </div>
+        <div>
+          <label>Notes</label>
+          <input type='text' value={note} onChange={(e) => setNote(e.target.value)} />
+        </div>
+        <button>Submit Order</button>
+        <div>{msg}</div>
+      </form> 
+    </>
   );
 };
 

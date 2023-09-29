@@ -75,4 +75,21 @@ soloProjectController.createOrder = (req, res, next) => {
     .catch((e) => {
       return next({log: 'createOrder failed', message: e.detail});});
 };
+
+soloProjectController.getOrder = (req, res, next) => {
+  const findOrder = `SELECT * FROM orders WHERE userid = '${req.query.userid}'`;
+  db.query(findOrder)
+    .then(data => {
+      if(!data.rows[0]){
+        res.locals.order = 'no order';
+      }
+      else{
+        res.locals.order = data.rows;
+      }
+      return next();
+    })
+    .catch((e) => {
+      return next({log: 'getOrder failed', message: e.detail});});
+};
+
 module.exports = soloProjectController;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import CreateOrder from './CreateOrder';
+import OrderList from './OrderList';
 const Dashboard = ({user, setUser}) => {
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const Dashboard = ({user, setUser}) => {
     <>
       <h4>Welcome, {user.fn + ' ' + user.ln + ' '}</h4>
       <CreateOrder user = {user} />
+      <OrderList user = {user} />
     </>
   );
   
