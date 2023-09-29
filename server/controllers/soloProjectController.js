@@ -63,4 +63,16 @@ soloProjectController.setUseridCookie = (req, res, next) => {
   return next();
 };
 
+soloProjectController.createOrder = (req, res, next) => {
+  console.log(req.body);
+  const { userid, link, note } = req.body;
+  const insertOrder = `INSERT INTO orders (userid, link, note) VALUES ('${userid}', '${link}', '${note}')`;
+
+  db.query(insertOrder)
+    .then(data => {
+      return next();
+    })
+    .catch((e) => {
+      return next({log: 'createOrder failed', message: e.detail});});
+};
 module.exports = soloProjectController;
