@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import CreateOrder from './CreateOrder';
 import OrderList from './OrderList';
 const Dashboard = ({user, setUser}) => {
+  const [orderCount, setOrderCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -10,12 +13,21 @@ const Dashboard = ({user, setUser}) => {
       .then(res => res.json())
       .then(res => {
         setUser(res);
-        console.log(user);
       })
-      .catch(err => console.log('GET to /api/getSession FAILED ', err));
+      .catch(err => console.log('GET to /api/getsession FAILED ', err));
 
   }, []);
-    
+  
+  const handleSignOut = e => {
+    e.preventDefault();
+    fetch(`/api/deletesession?userid=${user.userid}`, {method: 'DELETE'})
+      .then(res => {
+        setUser(null);
+        navigate('/dashboard');
+      })
+      .catch(err => console.log('GET to /api/deletesession FAILED ', err));
+  };
+
   if(!user){
     return (
       <>
@@ -27,8 +39,10 @@ const Dashboard = ({user, setUser}) => {
   return (
     <>
       <h4>Welcome, {user.fn + ' ' + user.ln + ' '}</h4>
-      <CreateOrder user = {user} />
-      <OrderList user = {user} />
+      <Link to='/about' onClick={handleSignOut}>Sign Out</Link>
+
+      <CreateOrder user = {user} orderCount = {orderCount} setOrderCount = {setOrderCount} />
+      <OrderList user = {user}  orderCount = {orderCount} />
     </>
   );
   

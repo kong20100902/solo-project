@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
-import OrderList from './OrderList';
 
-const CreateOrder = ({user}) => {
+const CreateOrder = ({user, orderCount, setOrderCount}) => {
   const [link, setLink] = useState('');
   const [note, setNote] = useState('');
   const [msg, setMsg] = useState('');
-
   const handleOrder = (e) => {
     e.preventDefault();
     const body = {userid : user.userid, link, note };
-    console.log(body);
     if(!link || !note){
       setMsg('Link and note must be provided');
       return;
@@ -25,6 +21,9 @@ const CreateOrder = ({user}) => {
         body: JSON.stringify(body)
       }
     )
+      .then(data => {
+        setOrderCount(orderCount + 1);
+      })
       .catch(err => console.log('POST to /api/createorder FAILED ', err));
 
   };

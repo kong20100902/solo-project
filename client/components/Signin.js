@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 const Signin = ({setUser}) => {
+  const navigate = useNavigate();
+
   const handleSignin = e => {
     e.preventDefault();
     if(!email || !pw){
       alert('All info required in order to sign in');
     }
-    fetch(`/api/getUser?email=${email}`)
+    fetch(`/api/getuser?email=${email}`)
       .then(res => res.json())
       .then(res => { 
-        if(res === 'no user'){
-          setMsg('Did not find user');
-        }
-        else if(res.pw !== pw){
-          setMsg('Wrong password');
+        if(res === 'no user' || res.pw !== pw){
+          setMsg('Sign in info does not match');
         }
         else{
           navigate('/dashboard');
@@ -23,7 +22,6 @@ const Signin = ({setUser}) => {
       .catch(err => console.log('GET to /api/getuser FAILED ', err));
 
   };
-  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');

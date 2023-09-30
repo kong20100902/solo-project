@@ -52,7 +52,9 @@ soloProjectController.hasSession = (req, res, next) => {
         res.locals.user = data.rows[0];
         return next();
       });
-  });
+  })
+    .catch((e) => {
+      return next({log: 'hasSession failed', message: e.detail});});
 };
 
 soloProjectController.setUseridCookie = (req, res, next) => {
@@ -63,8 +65,15 @@ soloProjectController.setUseridCookie = (req, res, next) => {
   return next();
 };
 
+soloProjectController.deleteSession = (req, res, next) => {
+  Session.deleteOne({cookieId: req.query.userid}).then(document => {
+    return next();
+  })
+    .catch((e) => {
+      return next({log: 'deleteSession failed', message: e.detail});});
+};
+
 soloProjectController.createOrder = (req, res, next) => {
-  console.log(req.body);
   const { userid, link, note } = req.body;
   const insertOrder = `INSERT INTO orders (userid, link, note) VALUES ('${userid}', '${link}', '${note}')`;
 
@@ -92,4 +101,23 @@ soloProjectController.getOrder = (req, res, next) => {
       return next({log: 'getOrder failed', message: e.detail});});
 };
 
+soloProjectController.quoteAccepted = (req, res, next) => {
+  const quoteAccepted = `UPDATE orders SET agreequote = 'yes' WHERE orderid = '${req.query.orderid}'`;
+  db.query(quoteAccepted)
+    .then(data => {
+      return next();
+    })
+    .catch((e) => {
+      return next({log: 'quoteAccepted failed', message: e.detail});});
+};
+
+soloProjectController.deleteOrder = (req, res, next) => {
+  const deleteOrder = `DELETE FROM orders WHERE orderid = '${req.query.orderid}'`;
+  db.query(deleteOrder)
+    .then(data => {
+      return next();
+    })
+    .catch((e) => {
+      return next({log: 'deleteOrder failed', message: e.detail});});
+};
 module.exports = soloProjectController;
