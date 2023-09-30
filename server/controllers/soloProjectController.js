@@ -86,7 +86,7 @@ soloProjectController.createOrder = (req, res, next) => {
 };
 
 soloProjectController.getOrder = (req, res, next) => {
-  const findOrder = `SELECT * FROM orders WHERE userid = '${req.query.userid}'`;
+  const findOrder = `SELECT * FROM orders WHERE userid = '${req.query.userid}' ORDER BY orderid`;
   db.query(findOrder)
     .then(data => {
       if(!data.rows[0]){

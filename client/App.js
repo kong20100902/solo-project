@@ -9,9 +9,7 @@ import Register from './components/Register';
 
 import Error from './components/Error';
 import Dashboard from './components/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
 import './stylesheets/styles.css';
-import UserInfo from './components/CreateOrder';
 
 
 const App = () => {

@@ -46,7 +46,7 @@ const Register = ({setUser}) => {
 
   useEffect(() => {pw === spw ? setMsg('') : setMsg('Your passwords do not match');});
 
-  useEffect(() => {loggedEmail === email ? setMsg2(loggedEmail + ' exits') : setMsg2('');});
+  useEffect(() => {loggedEmail === email && loggedEmail !== '' ? setMsg2(loggedEmail + ' exists') : setMsg2('');});
 
 
   return (

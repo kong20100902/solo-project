@@ -6,13 +6,15 @@ import OrderList from './OrderList';
 const Dashboard = ({user, setUser}) => {
   const [orderCount, setOrderCount] = useState(0);
   const navigate = useNavigate();
-
   useEffect(() => {
     
     fetch('/api/getsession')
       .then(res => res.json())
       .then(res => {
         setUser(res);
+        if(res){
+          document.getElementsByTagName('body')[0].style.background = 'green';
+        }
       })
       .catch(err => console.log('GET to /api/getsession FAILED ', err));
 
@@ -23,6 +25,7 @@ const Dashboard = ({user, setUser}) => {
     fetch(`/api/deletesession?userid=${user.userid}`, {method: 'DELETE'})
       .then(res => {
         setUser(null);
+        document.getElementsByTagName('body')[0].style.background = 'white';
         navigate('/dashboard');
       })
       .catch(err => console.log('GET to /api/deletesession FAILED ', err));
