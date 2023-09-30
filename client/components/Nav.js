@@ -11,7 +11,7 @@ const Nav = () => {
       <nav>
         <NavLink to='/signin' className='navbtn' >Sign In</NavLink>
         <NavLink to='/register' className='navbtn' >Register</NavLink>
-        <NavLink to='/dashboard' className='navbtn' >dashboard</NavLink>
+        <NavLink to='/dashboard' className='navbtn' >Dashboard</NavLink>
       </nav>
     </>
   );
