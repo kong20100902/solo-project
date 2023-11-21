@@ -9,7 +9,7 @@ module.exports = {
   
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    // publicPath: '/',
     filename: '[name].js',
   },
   mode: process.env.NODE_ENV,
